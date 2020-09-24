@@ -29,12 +29,14 @@ error.
 
 Installing
 -----------
-Only tested on Debian Jessie with MariaDB 10.0. Please do not file issues about
-this not compiling on other platforms without including a patch.
+~~Only tested on Debian Jessie with MariaDB 10.0. Please do not file issues about~~
+~~this not compiling on other platforms without including a patch.~~
 
-    sudo apt-get install libmariadb-client-lgpl-dev build-essential
+This fork is configured for my setup on Debian 10, Buster.
+
+    sudo apt-get install libmariadb-dev-compat build-essential
     make clean all
-    sudo cp bcrypt.so /usr/lib/mysql/plugin/
+    sudo cp bcrypt.so /usr/lib/x86_64-linux-gnu/mariadb19/plugin/
     mysql -e "drop function if exists bcrypt_hash;  create function bcrypt_hash  returns string  soname 'bcrypt.so';"
     mysql -e "drop function if exists bcrypt_check; create function bcrypt_check returns integer soname 'bcrypt.so';"
 

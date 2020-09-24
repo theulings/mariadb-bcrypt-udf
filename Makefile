@@ -6,7 +6,7 @@ CFLAGS += -Wno-missing-prototypes -Wno-unused-parameter -Wno-undef -Wno-strict-p
 all: bcrypt.so
 
 bcrypt.o: bcrypt.c
-	gcc -Wall -fPIC $(CFLAGS) -I/usr/include/mariadb -o $@ -c $<
+	gcc -Wall -fPIC $(CFLAGS) -I/usr/include/mariadb/server/private -I/usr/include/mariadb/server -o $@ -c $<
 
 bcrypt.so: bcrypt.o crypt_blowfish
 	gcc -Wall -fPIC $(LDFLAGS) -shared bcrypt.o crypt_blowfish/*.o -o $@
